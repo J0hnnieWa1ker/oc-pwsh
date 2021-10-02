@@ -1,10 +1,10 @@
-# oc-pwsh
-[![Docker Repository on Quay](https://quay.io/repository/j0hnniewa1ker/oc-pwsh/status "Docker Repository on Quay")](https://quay.io/repository/j0hnniewa1ker/oc-pwsh) 
+# oc-pwsh [![Docker Repository on Quay](https://quay.io/repository/j0hnniewa1ker/oc-pwsh/status "Docker Repository on Quay")](https://quay.io/repository/j0hnniewa1ker/oc-pwsh)
+[changelog](changelog.md) 
+- https://docs.openshift.com/container-platform/3.10/rest_api/index.html
+- https://github.com/PowerShell/PowerShell/tree/master/docs/learning-powershell
 ```docker 
 docker pull quay.io/j0hnniewa1ker/oc-pwsh
 ```
-- https://github.com/PowerShell/PowerShell/tree/master/docs/learning-powershell
-
 #### create oc url variable with your cluster url
 ```
 read ocurl
