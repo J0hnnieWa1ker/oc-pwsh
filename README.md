@@ -1,4 +1,17 @@
 # oc-pwsh
+- https://github.com/PowerShell/PowerShell/tree/master/docs/learning-powershell
+
+#### create quay username variable
 ```
-docker run -it --rm --name oc-pwsh mcr.microsoft.com/powershell:latest
+read quayusername
 ```
+#### build this image
+```
+docker build -t quay.io/${quayusername}/oc-pwsh .
+```
+#### run this image
+```
+docker run -it --rm --name oc-pwsh quay.io/${quayusername}/oc-pwsh
+```
+
+
