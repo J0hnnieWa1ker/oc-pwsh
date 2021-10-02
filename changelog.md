@@ -90,6 +90,57 @@ hello
 PS /> 
 ```
 ## Fri Oct  1 20:21:57 PDT 2021
-Did a google search for `openshift powershell module` and found a lot of article talking about using the oc cli in a powershell session but couldn't find an actual powershell module for it. No real point of using powershell that is just a wrapper around the cli tools because they just return text. I prefer Powershell because it is object oriented. 
+Did a google search for `openshift powershell module` and found a lot of articles talking about using the oc cli in a powershell session but couldn't find an actual powershell module for it. No real point of using powershell that is just a wrapper around the cli tools because they just return text. I prefer Powershell because it is object oriented. 
 
 Time to look at the OpenShift [Rest API Examples](https://docs.openshift.com/container-platform/3.10/rest_api/examples.html) odd that the documentation for 3.10 has more detail then the current versions. I'll start with the curl examples then get the calls working using `Invoke-RestMethod`
+
+## Fri Oct  1 20:57:29 PDT 2021
+starting with a $oc hash to organize configuration, list apis, and stash results in Microsoft.PowerShell_profile.ps1
+```
+➜  oc-pwsh git:(master) ✗ read quayusername                                                 
+j0hnniewa1ker
+➜  oc-pwsh git:(master) ✗ docker build -t quay.io/${quayusername}/oc-pwsh .                                                           
+[+] Building 0.2s (8/8) FINISHED                                                                                                                  
+ => [internal] load build definition from Dockerfile                              
+ => => transferring dockerfile: 37B                                               
+ => [internal] load .dockerignore                                                 
+ => => transferring context: 2B                                                   
+ => [internal] load metadata for mcr.microsoft.com/powershell:latest              
+ => [internal] load build context                                                 
+ => => transferring context: 428B                                                 
+ => [1/3] FROM mcr.microsoft.com/powershell:latest                                
+ => CACHED [2/3] RUN apt-get update     && apt-get install -y         vim-tiny    
+ => [3/3] COPY pwsh /root/.config/powershell                                      
+ => exporting to image                                                            
+ => => exporting layers                                                           
+ => => writing image sha256:5506774b96cfe238f0a627588f33af1fa20814f082ab8ab5334b8bd140d6a166                      
+ => => naming to quay.io/j0hnniewa1ker/oc-pwsh                                    
+➜  oc-pwsh git:(master) ✗ docker run -it --rm --env octoken=$octoken --env ocurl=$ocurl --name oc-pwsh quay.io/${quayusername}/oc-pwsh
+PowerShell 7.1.4
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+$oc hash to organize configuration, list apis, and stash results
+
+Name                           Value
+----                           -----
+url                            https://******.us-south.containers.cloud.ibm.com:31185
+headers                        {Authorization}
+api                            {auth}
+auth                           @{kind=User; apiVersion=user.openshift.io/v1; metadata=; identities=System.Object[]; groups=System.Object[]}
+
+Loading personal and system profiles took 796ms.
+PS /> $oc.auth
+
+kind       : User
+apiVersion : user.openshift.io/v1
+metadata   : @{name=IAM#******@ibm.com; uid=*******-****-****-****-**********; resourceVersion=18691; creationTimestamp=9/20/2021 10:57:19 
+             PM}
+identities : {IAM:IBMid-**********}
+groups     : {system:authenticated, system:authenticated:oauth}
+
+
+PS /> 
+```
