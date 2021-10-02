@@ -44,7 +44,7 @@ PS /> vi
 vi: The term 'vi' is not recognized as a name of a cmdlet, function, script file, or executable program.
 Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
 ```
-Time for a Dockerfile so I can edit files inside the container.
+- Time for a Dockerfile so I can edit files inside the container.
 ```
 FROM mcr.microsoft.com/powershell:latest
 
@@ -53,12 +53,11 @@ RUN apt-get update \
         vim-tiny
 ```
 
-Since I'm already playing with a custom image let's build so it's easy to push up to quay.io
+- Since I'm already playing with a custom image let's build so it's easy to push up to quay.io
 
 ```
 # create quay username variable
 read quayusername
-docker build -t quay.io/${quayusername}/oc-pwsh .
 ```
 
 ➜  oc-pwsh git:(master) ✗ `docker run -it --rm --name oc-pwsh quay.io/${quayusername}/oc-pwsh`
@@ -71,4 +70,22 @@ Type 'help' to get help.
 
 PS /> which vi
 /usr/bin/vi
+```
+## Fri Oct 1 11:30:23 PDT 2021
+```
+PS /> $profile
+/root/.config/powershell/Microsoft.PowerShell_profile.ps1
+```
+- Adding the Microsoft.PowerShell_profile.ps1
+
+➜  oc-pwsh git:(master) ✗ `docker run -it --rm --name oc-pwsh quay.io/${quayusername}/oc-pwsh`
+```
+PowerShell 7.1.4
+Copyright (c) Microsoft Corporation.
+
+https://aka.ms/powershell
+Type 'help' to get help.
+
+hello
+PS /> 
 ```
