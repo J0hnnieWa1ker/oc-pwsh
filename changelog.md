@@ -89,3 +89,7 @@ Type 'help' to get help.
 hello
 PS /> 
 ```
+## Fri Oct  1 20:21:57 PDT 2021
+Did a google search for `openshift powershell module` and found a lot of article talking about using the oc cli in a powershell session but couldn't find an actual powershell module for it. No real point of using powershell that is just a wrapper around the cli tools because they just return text. I prefer Powershell because it is object oriented. 
+
+Time to look at the OpenShift [Rest API Examples](https://docs.openshift.com/container-platform/3.10/rest_api/examples.html) odd that the documentation for 3.10 has more detail then the current versions. I'll start with the curl examples then get the calls working using `Invoke-RestMethod`
