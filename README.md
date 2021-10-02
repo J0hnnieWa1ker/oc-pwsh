@@ -5,6 +5,14 @@
 ```
 read quayusername
 ```
+#### create oc url variable with your cluster url
+```
+read ocurl
+```
+#### create oc token variable, -s hides it and doesn't even show up in history
+```
+read -s octoken
+```
 #### build this image
 ```
 docker build -t quay.io/${quayusername}/oc-pwsh .
